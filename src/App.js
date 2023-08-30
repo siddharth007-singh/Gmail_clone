@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import {Header} from './Components';
 
 function App() {
   return (
     <div className="App">
-      <h2>Gmail Clone</h2>
+    <Header/>
+      <h2 className='font-extrabold'>Gmail Clone</h2>
     </div>
   );
 }
