@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 const SideBar = ()=>{
     return(
         <div className=" flex flex-row w-80 px-3 p-4">
-            <div className="rounded-full text-white px-3 py-3 cursor-pointer">Compose</div>
+            <Button className="border-amber-300"><AddIcon/>COMPOSE</Button>
         </div>
     )
 }
