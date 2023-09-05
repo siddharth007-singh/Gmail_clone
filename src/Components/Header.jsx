@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import {Logo2} from "../asset";
@@ -7,7 +7,16 @@ import {ArrowDropDown} from "@mui/icons-material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
+
 const Header = () => {
+
+    const [search, setSearch] = useState("");
+
+    const HandleSearch = (e)=>{
+        console.log(search);
+        setSearch("");
+    }
+
   return (
     <div className="w-full h-full flex items-center justify-between border shadow-md py-3 gap-3 px-5">
         {/*Herder Left */}
@@ -29,7 +38,9 @@ const Header = () => {
               type="text"
               placeholder="Search Mails"
               name="search"
-              className="w-full bg-opacity-0 border-none text-base  "
+              className="w-full bg-opacity-0 border-none text-base "
+              onClick={HandleSearch}
+              onChange={(e)=>setSearch(e.target.value)}
           />
           <ArrowDropDown/>
       </div>
