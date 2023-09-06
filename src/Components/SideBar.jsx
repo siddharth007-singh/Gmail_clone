@@ -9,7 +9,7 @@ const SideBar = ()=>{
         <div className=" flex flex-row w-80 px-3 p-4">
            <div className="flex-col">
                <div className="bg-gray-700 px-3 py-3 rounded-md text-white cursor-pointer text-center"><AddIcon/> COMPOSE</div>
-               <SideBarOption Icon={InboxIcon} tile="Inbox" selected={true}/>
+               <SideBarOption Icon={InboxIcon} tile="Inbox"/>
                <SideBarOption Icon={StarIcon} tile="Started" />
                <SideBarOption Icon={InboxIcon} tile="Important" />
                <SideBarOption Icon={InboxIcon} tile="Sent" />
