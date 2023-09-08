@@ -1,0 +1,10 @@
+.emailList{
+    flex: 1;
+    overflow: scroll;
+}
+
+.emailList_setting{
+    display: flex;
+    justify-content: space-between;
+    /*margin-top: 8px;*/
+}

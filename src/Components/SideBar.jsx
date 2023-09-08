@@ -6,6 +6,13 @@ import StarIcon from '@mui/icons-material/Star';
 import LabelImportantIcon from "@mui/icons-material/Label";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import NoteIcon from "@mui/icons-material/Note";
+import {IconButton} from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
+import DuoIcon from '@mui/icons-material/Duo';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+import './SideBarOptions.css'
+
 
 const SideBar = ()=>{
     return(
@@ -18,6 +25,19 @@ const SideBar = ()=>{
                <SideBarOption Icon={NearMeIcon} tile="Sent" />
                <SideBarOption Icon={NoteIcon} tile="Draft"/>
            </div>
+            {/*<div className="sidebar_footer">*/}
+            {/*    <div className="sidebar_footerIcon">*/}
+            {/*        <IconButton>*/}
+            {/*            <PersonIcon/>*/}
+            {/*        </IconButton>*/}
+            {/*        <IconButton>*/}
+            {/*            <DuoIcon/>*/}
+            {/*        </IconButton>*/}
+            {/*        <IconButton>*/}
+            {/*            <PhoneIcon/>*/}
+            {/*        </IconButton>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
