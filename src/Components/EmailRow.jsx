@@ -16,8 +16,12 @@ const EmailRow = ({id, title, subject, desc, time}) => {
                     <LabelImportantOutlinedIcon/>
                 </IconButton>
             </div>
-            <div className="emailRow_title"></div>
-            <div className="emailRow_message"></div>
+            <div className="emailRow_title">
+                {title}
+            </div>
+            <div className="emailRow_message">
+                <h4>{subject} <span className="emailList_desc">{desc}</span></h4>
+            </div>
             <div className="emailRow_description"></div>
         </div>
     )
