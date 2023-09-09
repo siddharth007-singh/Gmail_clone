@@ -8,6 +8,11 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
 import SettingsIcon from "@mui/icons-material/Settings";
+import InboxIcon from "@mui/icons-material/Inbox";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import PeopleIcon from "@mui/icons-material/People";
+
+import {Section} from './index';
 
 const EmailList = ()=>{
     return(
@@ -42,7 +47,9 @@ const EmailList = ()=>{
             </div>
 
             <div className="emailList-section">
-
+                <Section Icon={InboxIcon} title="Primary" cole="red" selected/>
+                <Section Icon={PeopleIcon} title="Social" cole="#1A73E8"/>
+                <Section Icon={LocalOfferIcon} title="Promotions" cole="green"/>
             </div>
 
         </div>

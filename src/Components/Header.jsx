@@ -18,7 +18,7 @@ const Header = () => {
     }
 
   return (
-    <div className="w-full h-full flex items-center justify-between border shadow-md py-3 gap-3 px-5">
+    <div className="w-full h-full flex items-center justify-between border shadow-md py-3 gap-12">
         {/*Herder Left */}
       <div className="flex flex-row items-center justify-center cursor-pointer">
           <IconButton>
