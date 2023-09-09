@@ -59,6 +59,12 @@ const EmailList = ()=>{
                     desc="Hey Fellow Peopls how are you"
                     time="10pm"
                 />
+                <EmailRow
+                    title="Testing title"
+                    subject="This is Testing the subject"
+                    desc="Hey Fellow Peopls how are you"
+                    time="10pm"
+                />
             </div>
 
         </div>
