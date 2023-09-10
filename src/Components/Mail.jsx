@@ -20,6 +20,7 @@ import {useNavigate} from "react-router-dom";
 const Mail = ()=>{
     const navigate = useNavigate();
 
+
     return(
         <div className="mail">
             <div className="mail_tools">
