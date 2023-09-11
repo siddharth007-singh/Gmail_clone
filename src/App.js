@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import {Header, Sidebar, Mail, EmailList} from './Components';
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {SendMail} from '../src/Components/index';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
             <Route path="/" element={<EmailList/>}/>
           </Routes>
         </div>
+
+        <SendMail/>
       </div>
     </Router>
   );
