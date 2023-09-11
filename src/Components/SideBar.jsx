@@ -10,15 +10,24 @@ import NoteIcon from "@mui/icons-material/Note";
 // import PersonIcon from '@mui/icons-material/Person';
 // import DuoIcon from '@mui/icons-material/Duo';
 // import PhoneIcon from '@mui/icons-material/Phone';
-
 import './SideBarOptions.css'
+import {useDispatch} from "react-redux";
+import {openSendMessage} from "../features/mailSlice";
 
 
 const SideBar = ()=>{
+
+    const dispatch = useDispatch();
+
     return(
         <div className="flex flex-row w-40 px-4 p-4">
            <div className="flex-col">
-               <div className="bg-gray-700 px-3 py-3 rounded-md text-white cursor-pointer text-center"><AddIcon/> COMPOSE</div>
+               <div
+                   className="bg-gray-700 px-3 py-3 rounded-md text-white cursor-pointer text-center"
+                   onClick={()=>dispatch(openSendMessage())}
+               >
+                   <AddIcon/> COMPOSE
+               </div>
                <SideBarOption Icon={InboxIcon} tile="Inbox"/>
                <SideBarOption Icon={StarIcon} tile="Started" />
                <SideBarOption Icon={LabelImportantIcon} tile="Important" />
