@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./EmailList.css";
 import {Checkbox, IconButton} from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -11,10 +11,39 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import InboxIcon from "@mui/icons-material/Inbox";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import PeopleIcon from "@mui/icons-material/People";
-
 import {EmailRow, Section} from './index';
+import {fStore} from "./firebase";
+import {collection, getDocs} from 'firebase/firestore';
+
+
 
 const EmailList = ()=>{
+
+    const [email, setEmail] = useState([]);
+
+    const connection = collection(fStore, "emails");
+
+    // useEffect(() => {
+    //     fStore.collection("emails")
+    //         .orderBy("timestamp", "desc")
+    //         .onSnapshot((snapshot)=>
+    //             setEmail(
+    //                 snapshot.docs.map((doc)=>({
+    //                     id: doc.id,
+    //                     data: doc.data(),
+    //                 }))
+    //             )
+    //         );
+    // }, []);
+
+    useEffect(() => {
+        const getData = async ()=>{
+            const dbValue = await getDocs(connection);
+            setEmail(dbValue.docs.map(doc=>({...doc.data(), id:doc.id})))
+        }
+        getData()
+    }, [connection]);
+
     return(
         <div className="emailList">
             <div className="emailList_setting">
@@ -53,18 +82,14 @@ const EmailList = ()=>{
             </div>
 
             <div className="emailList_list">
-                <EmailRow
-                    title="Testing title"
-                    subject="This is Testing the subject"
-                    desc="Hey Fellow Peopls how are you"
-                    time="10pm"
-                />
-                <EmailRow
-                    title="Testing title"
-                    subject="This is Testing the subject"
-                    desc="Hey Fellow Peopls how are you"
-                    time="10pm"
-                />
+                {email.map(val=>(
+                    <EmailRow key={val.id}
+                        title={val.head}
+                        subject={val.sub}
+                        desc={val.msg}
+                        time={val.timestamp}
+                    />
+                ))}
             </div>
 
         </div>

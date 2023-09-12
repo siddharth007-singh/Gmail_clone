@@ -15,12 +15,14 @@ import PrintIcon from "@mui/icons-material/Print";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
 import {useNavigate} from "react-router-dom";
+import {fStore} from "./firebase";
+import {collection} from 'firebase/firestore';
 
 
 const Mail = ()=>{
     const navigate = useNavigate();
 
-
+    const connection = collection(fStore, "emails");
 
     return(
         <div className="mail">
