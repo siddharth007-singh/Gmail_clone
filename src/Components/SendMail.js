@@ -5,24 +5,34 @@ import {Button} from "@mui/material";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {closeSendMessage} from "../features/mailSlice";
-import firebase from "firebase/compat";
-import {db} from "./firebase";
+import firebase from "./firebase";
+import {fStore} from './firebase';
+import {collection, addDoc} from '@firebase/firestore';
+
 
 const SendMail = () => {
 
     const {register, handleSubmit}  = useForm();
     const dispatch = useDispatch();
+    const ref = collection(fStore, 'emails');
 
-    const onSubmit = (formData)=>{
+    const onSubmit = async (formData)=>{
         console.log(formData);
-        db.collection('emails').add(
-            {
-                head:formData.head,
-                sub:formData.sub,
-                msg:formData.msg,
-                timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-            }
-        );
+        // fStore.collection('emails').add(
+        //     {
+        //         head:formData.head,
+        //         sub:formData.sub,
+        //         msg:formData.msg,
+        //         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        //     }
+        // );
+        console.log(formData);
+        await addDoc(ref,{
+            head:formData.head,
+            sub:formData.sub,
+            msg:formData.msg,
+            timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
         dispatch(closeSendMessage());
     };
 
@@ -50,3 +60,5 @@ const SendMail = () => {
 };
 
 export default SendMail;
+
+
