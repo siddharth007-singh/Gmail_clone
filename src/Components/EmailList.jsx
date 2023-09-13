@@ -41,7 +41,7 @@ const EmailList = ()=>{
             const dbValue = await getDocs(connection);
             setEmail(dbValue.docs.map(doc=>({...doc.data(), id:doc.id})))
         }
-        getData()
+        getData();
     }, [connection]);
 
     return(
