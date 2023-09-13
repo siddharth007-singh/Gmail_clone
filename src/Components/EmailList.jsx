@@ -14,27 +14,19 @@ import PeopleIcon from "@mui/icons-material/People";
 import {EmailRow, Section} from './index';
 import {fStore} from "./firebase";
 import {collection, getDocs} from 'firebase/firestore';
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {selectedMail} from "../features/mailSlice";
 
 
 
-const EmailList = ()=>{
+const EmailList = ({id, head, sub, msg})=>{
 
     const [email, setEmail] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const connection = collection(fStore, "emails");
-
-    // useEffect(() => {
-    //     fStore.collection("emails")
-    //         .orderBy("timestamp", "desc")
-    //         .onSnapshot((snapshot)=>
-    //             setEmail(
-    //                 snapshot.docs.map((doc)=>({
-    //                     id: doc.id,
-    //                     data: doc.data(),
-    //                 }))
-    //             )
-    //         );
-    // }, []);
 
     useEffect(() => {
         const getData = async ()=>{
@@ -44,8 +36,20 @@ const EmailList = ()=>{
         getData();
     }, [connection]);
 
+    //id, head, sub, msg are payload here in selectmsg;
+    const OpenMail =()=>{
+        dispatch(
+            selectedMail({
+                id,
+                head,
+                sub,
+                msg,
+            })
+        )
+        navigate('/mail');
+    }
     return(
-        <div className="emailList">
+        <div className="emailList" onClick={OpenMail}>
             <div className="emailList_setting">
                 <div className="emailList_settingLeft">
                     <Checkbox/>

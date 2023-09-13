@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./Mail.css";
 import {IconButton} from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -14,15 +14,27 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PrintIcon from "@mui/icons-material/Print";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {fStore} from "./firebase";
-import {collection} from 'firebase/firestore';
+import {collection, getDocs} from 'firebase/firestore';
+// import {useSelector} from "react-redux";
+// import {selectOpenMail} from "../features/mailSlice";
+
 
 
 const Mail = ()=>{
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const connection = collection(fStore, "emails");
+    // const selectMail = useSelector(selectOpenMail);
+
+    useEffect(() => {
+        const getDoc = async()=>{
+            const dbValue = await getDocs(connection);
+
+        }
+    }, [connection, id]);
 
     return(
         <div className="mail">
